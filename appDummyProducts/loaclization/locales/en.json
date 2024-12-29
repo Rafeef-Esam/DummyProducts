@@ -1,5 +1,16 @@
 {
     "price": "Price",
     "rate": "Rating",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "products": "Products",
+    "product_details": "Product Details",
+    "app_setting":"App Setting",
+    "theme": "Theme",
+    "language": "Language",
+    "arabic": "Arabic",
+    "english": "English",
+    "dark": "Dark",
+    "light": "Light",
+    "review_by": "Review by",
+    "reviewed_on": "Reviewed on"
 }

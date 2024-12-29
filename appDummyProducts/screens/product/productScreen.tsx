@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, ActivityIndicator } from 'react-native';
-import { fetchProducts } from '../../network/api/fetchProducts.tsx';
-import { Product } from '../../network/models/product.js';
-import { productListItem } from './productItem.tsx';
-import { useNavigation } from '@react-navigation/native';
-import { ProductsScreenNavigationProp } from '../../navigation/productNavigation.tsx';
-import { productScreenStyle } from './styles/productScreenStyle.js';
+import { View, Text, FlatList, ActivityIndicator } from 'react-native';
+import { fetchProducts } from '../../network/api/fetchProducts';
+import { Product } from '../../network/models/product';
+import { ProductListItem } from './productItem';
+import { useNavigation, useTheme } from '@react-navigation/native';
+import { ProductsScreenNavigationProp } from '../../navigation/productNavigation';
+import { productScreenStyle } from './styles/productScreenStyle';
+import { DarkThemeExtended, LightTheme } from '../../utilis/colors';
 
 export const ProductsScreen = () => {
   const navigation = useNavigation<ProductsScreenNavigationProp>();
-
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const { dark } = useTheme();
+  const colors = dark ? DarkThemeExtended.colors : LightTheme.colors;
+  const styles = productScreenStyle(colors);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -25,32 +29,29 @@ export const ProductsScreen = () => {
       }
     };
     loadProducts();
-  }, []);  
+  }, []);
+
+  const navigateToProductDetails = (product: Product) => {
+    navigation.navigate('ProductDetailsScreen', { product });
+  };
 
   if (loading) {
     return (
-      <View style={productScreenStyle.loader}>
+      <View style={styles.loader}>
         <ActivityIndicator size="large" color="#000" />
         <Text>Loading...</Text>
       </View>
     );
   }
 
-  // navigation
-   const navigateToProductDetails = (product: Product) => {
-    navigation.navigate('ProductDetailsScreen', { product });
-  };
-  
-  
-
   return (
     <FlatList
       data={products}
       renderItem={({ item }) => (
-        productListItem({ item, onPress: navigateToProductDetails })
+        <ProductListItem item={item} onPress={navigateToProductDetails} colors={colors} />
       )}
       keyExtractor={(item) => item.id.toString()}
-      contentContainerStyle={productScreenStyle.list}
+      contentContainerStyle={styles.list}
     />
   );
 };

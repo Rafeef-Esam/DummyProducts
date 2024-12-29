@@ -1,5 +1,17 @@
 {
     "price": "السعر",
     "rate": "التقيم",
-    "reviews":"المراجعات"
+    "reviews": "المراجعات",
+    "products": "المنتجات",
+    "product_details": "تفاصيل المنتج",
+    "app_setting": "إعدادات التطبيق",
+    "theme": "السمة",
+    "language": "اللغة",
+    "arabic": "العربية",
+    "english": "الإنجليزية",
+    "dark": "غامق",
+    "light": "فاتح",
+    "review_by": "تمت المراجعه بواسطة",
+    "reviewed_on": "تمت المراجعة في"
+  
 }

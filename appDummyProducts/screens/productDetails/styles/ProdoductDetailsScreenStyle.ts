@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native';
+import { ThemeColors } from '../../../utilis/colors';
 
-export const productDetailsStyle = StyleSheet.create({
+export const productDetailsStyle  = (colors: ThemeColors) => StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#fff',
+    backgroundColor: colors.white,
   },
   image: {
     width: '100%',
@@ -13,19 +14,20 @@ export const productDetailsStyle = StyleSheet.create({
     borderRadius: 8,
   },
   title: {
+    color: colors.black,
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 8,
   },
   description: {
     fontSize: 16,
-    color: '#555',
+    color: colors.darkGray,
     marginBottom: 16,
   },
   price: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#00aaff',
+    color: colors.blue,
     marginBottom: 16,
   },
   reviewsList: {
@@ -35,28 +37,30 @@ export const productDetailsStyle = StyleSheet.create({
     marginBottom: 16,
     padding: 12,
     borderRadius: 8,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: colors.lightGray,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: colors.lightOrange,
   },
   reviewTitle: {
-    fontSize: 16,
+    color: colors.black,
+    fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 4,
   },
   reviewComment: {
-    fontSize: 14,
-    color: '#555',
+    fontSize: 16,
+    color: colors.darkGray,
+    fontWeight: 'medium',
     marginBottom: 8,
   },
   reviewRating: {
-    fontSize: 14,
-    color: '#ffaa00',
+    fontSize: 16,
+    color: colors.orange,
     marginBottom: 4,
   },
   reviewDate: {
-    fontSize: 12,
-    color: '#999',
+    fontSize: 14,
+    color: colors.darkGrayText,
   },
   rowView: {
     flexDirection: "row",
